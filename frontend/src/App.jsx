@@ -1,7 +1,6 @@
-// RRD
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// PAGES
+// pages & components
 import Home from "./Pages/Home";
 import Nav from "./Components/Nav";
 

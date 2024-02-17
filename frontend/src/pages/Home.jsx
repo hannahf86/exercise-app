@@ -7,16 +7,16 @@ const Home = () => {
   const [workouts, setWorkouts] = useState(null);
 
   useEffect(() => {
-    const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts");
+    const fetchWorkout = async () => {
+      const response = await fetch("workouts/");
       const json = await response.json();
 
       if (response.ok) {
-        setWorkouts(json);
+        setWorkouts(json.workout);
       }
     };
 
-    fetchWorkouts();
+    fetchWorkout();
   }, []);
 
   return (
