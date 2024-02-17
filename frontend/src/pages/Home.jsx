@@ -8,12 +8,15 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch("/api/workouts");
+      const response = await fetch("http://localhost:9000/api/workouts");
+
+      if (!response.ok) {
+        throw new Error('Error fetching workouts');
+      }
+
       const json = await response.json();
 
-      if (response.ok) {
-        setWorkouts(json);
-      }
+      setWorkouts(json);
     };
 
     fetchWorkouts();
