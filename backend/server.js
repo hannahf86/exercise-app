@@ -6,7 +6,7 @@ const workoutRoutes = require('./routes/workouts')
 
 // invoke the express app
 const app = express();
-app.use(cors())
+app.use(cors());
 
 // middleware
 app.use(express.json())
