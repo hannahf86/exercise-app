@@ -1,13 +1,20 @@
 /* eslint-disable react/prop-types */
 
+// contexts
 import { useWorkoutContext } from "../Hooks/useWorkoutContext";
+
+// date-fns
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+
+// icons
+import { HiTrash } from "react-icons/hi";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutContext();
 
   const handleClick = async () => {
     const response = await fetch(
-      "http://localhost:3000/api/workouts/" + workout._id,
+      "https://exercise-app-beta.vercel.app/api/workouts/" + workout._id,
       {
         method: "DELETE",
       }
@@ -30,8 +37,12 @@ const WorkoutDetails = ({ workout }) => {
         <strong>Number of reps: </strong>
         {workout.reps}
       </p>
-      <p>{workout.createdAt}</p>
-      <span onClick={handleClick}>delete</span>
+      <p>
+        {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
+      </p>
+      <span onClick={handleClick}>
+        <HiTrash size={30} color="#b5140e" />
+      </span>
     </div>
   );
 };
