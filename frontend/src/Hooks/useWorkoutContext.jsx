@@ -5,7 +5,7 @@ export const useWorkoutContext = () => {
   const context = useContext(WorkoutContext);
 
   if (!context) {
-    throw Error("Error: WorkoutContext");
+    throw Error("Error: WorkoutContext missing");
   }
 
   return context;
