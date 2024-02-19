@@ -14,14 +14,19 @@ export const workoutsReducer = (state, action) => {
       return {
         workouts: [action.payload, ...state.workouts],
       };
+    case "DELETE_WORKOUT":
+      return {
+        workouts: state.workouts.filter((w) => w._id !== action.payload._id),
+      };
     default:
       return state;
   }
 };
 
-// provide the context to the components - wrap around children/app in main.jsx
 export const WorkoutContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(workoutsReducer, { workouts: null });
+  const [state, dispatch] = useReducer(workoutsReducer, {
+    workouts: null,
+  });
 
   return (
     <WorkoutContext.Provider value={{ ...state, dispatch }}>
